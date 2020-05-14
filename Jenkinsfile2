@@ -1,0 +1,34 @@
+def workspace;
+node 
+{
+	stage('Checkout')
+	{
+	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/jenkinsgituser/SampleProject.git']]])
+	workspace=pwd()
+	}
+	
+	stage('Code analysis')
+	{
+	echo "Code analysis will be done here"
+	}
+	
+	stage('Build')
+	{
+	echo "Building the code here"
+	}
+	
+	stage('Unit testing')
+	{
+	echo "Unit testing will be done on build code here"
+	}
+	
+	stage('Packing')
+	{
+	echo "Packaging will be done on build code here"
+	}
+	
+	stage('Delivery')
+	{
+	echo "deployment will be done on physical server"
+	}
+}
